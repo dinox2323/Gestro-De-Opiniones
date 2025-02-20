@@ -126,7 +126,6 @@ export const editProfile = async (req, res) => {
             });
         }
 
-        // Verificar la contraseña actual si se proporciona una nueva contraseña
         if (currentPassword && newPassword) {
             const isPasswordValid = await verify(user.password, currentPassword);
             if (!isPasswordValid) {
@@ -138,7 +137,6 @@ export const editProfile = async (req, res) => {
             user.password = await hash(newPassword);
         }
 
-        // Actualizar nombre y nombre de usuario si se proporcionan
         if (name) user.name = name;
         if (username) user.username = username;
 
