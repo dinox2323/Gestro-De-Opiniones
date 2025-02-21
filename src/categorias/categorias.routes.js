@@ -19,6 +19,6 @@ router.get("/", listarCategoria);
 
 router.patch("/borrarCategoria/:uid", borrarCategoriasValidator, eliminarCategorias);
 
-router.patch("/actualizarCategorias/:uid", actualizarCategorias, actualizarCategoriaValidator);
+router.patch("/actualizarCategorias/:uid",actualizarCategoriaValidator , actualizarCategorias);
 
 export default router;

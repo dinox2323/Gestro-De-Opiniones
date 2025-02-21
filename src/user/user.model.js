@@ -34,6 +34,14 @@ const userSchema = Schema({
         maxLength: 8,
         required: true
     },
+    publicaciones:[{
+        type: Schema.Types.ObjectId,
+        ref: "Publicaciones"
+    }],
+    comentarios:[{
+        type: Schema.Types.ObjectId,
+        ref: "Comentarios"
+    }],
     status:{
         type: Boolean,
         default: true
