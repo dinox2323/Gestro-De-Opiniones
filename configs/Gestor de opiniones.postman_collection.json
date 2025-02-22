@@ -8,230 +8,932 @@
 	},
 	"item": [
 		{
-			"name": "Get data",
-			"event": [
+			"name": "Usuario",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Moises\",\r\n    \"username\": \"moisesxx\",\r\n    \"currentPassword\": \"Sabado2306_\",\r\n    \"newPassword\": \"Melocoton1042_\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Get data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/user/editProfile/67b3745904b48b137c9d23a7",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "3001",
-					"path": [
-						"gestorOpininiones-2023013",
-						"v1",
-						"user",
-						"editProfile",
-						"67b3745904b48b137c9d23a7"
-					]
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Moises\",\r\n    \"username\": \"moisesxx\",\r\n    \"currentPassword\": \"Sabado2306_\",\r\n    \"newPassword\": \"Melocoton1042_\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/user/editProfile/67b8d396982e00d75e2e26b0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"user",
+								"editProfile",
+								"67b8d396982e00d75e2e26b0"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
 				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"dinoxzz\",\n    \"password\": \"Sabado2306_\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Jose",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Ramirez",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "dinoxzz",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jramirez@kinal.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Sabado2306_",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/Informatica/Pictures/Screenshots/Captura de pantalla 2025-01-13 075232.png"
+								},
+								{
+									"key": "phone",
+									"value": "48694653",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/info?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"info"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Login",
-			"event": [
+			"name": "Categoria",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"packages": {},
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\": \"dinoxzz\",\n    \"password\": \"Sabado2306_\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Agregar Categorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/auth/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "3001",
-					"path": [
-						"gestorOpininiones-2023013",
-						"v1",
-						"auth",
-						"login"
-					]
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNjc5NDcsImV4cCI6MTc0MDE3MTU0N30.KEVGOwBNjLVUW1PVfEmeztbjH259FxlfrQKmRFBJWJw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Toyota\",\n    \"descripcion\": \"Toyota yaris\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/categorias/agregarCategorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"categorias",
+								"agregarCategorias"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
 				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-			},
-			"response": []
+				{
+					"name": "Listar Categorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNjc5NDcsImV4cCI6MTc0MDE3MTU0N30.KEVGOwBNjLVUW1PVfEmeztbjH259FxlfrQKmRFBJWJw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/categorias/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"categorias",
+								""
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Categorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNjc5NDcsImV4cCI6MTc0MDE3MTU0N30.KEVGOwBNjLVUW1PVfEmeztbjH259FxlfrQKmRFBJWJw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"Honda\",\r\n    \"descripcion\": \"CRV 2020\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/categorias/actualizarCategorias/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"categorias",
+								"actualizarCategorias",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "67b8db26974efc405ae3fc92"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Categorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNjc5NDcsImV4cCI6MTc0MDE3MTU0N30.KEVGOwBNjLVUW1PVfEmeztbjH259FxlfrQKmRFBJWJw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/categorias/borrarCategoria/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"categorias",
+								"borrarCategoria",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "67b8db26974efc405ae3fc92"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Registrar",
-			"event": [
+			"name": "Publicacion",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful PUT request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
-							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
+					"name": "Agregar Publicacion",
+					"event": [
 						{
-							"key": "name",
-							"value": "Jose",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						},
 						{
-							"key": "surname",
-							"value": "Ramirez",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "dinoxzz",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "jramirez@kinal.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "Sabado2306_",
-							"type": "text"
-						},
-						{
-							"key": "profilePicture",
-							"type": "file",
-							"src": "/C:/Users/Informatica/Pictures/Screenshots/Captura de pantalla 2025-01-13 075232.png"
-						},
-						{
-							"key": "phone",
-							"value": "48694653",
-							"type": "text"
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/auth/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "3001",
-					"path": [
-						"gestorOpininiones-2023013",
-						"v1",
-						"auth",
-						"register"
-					]
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNjc5NDcsImV4cCI6MTc0MDE3MTU0N30.KEVGOwBNjLVUW1PVfEmeztbjH259FxlfrQKmRFBJWJw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"carros\",\n    \"contenido\": \"carros tuenables\",\n    \"categoria\": \"67b8db26974efc405ae3fc92\",\n    \"autor\": \"67b8db04974efc405ae3fc8d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/publicaciones/agregarPublicacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"publicaciones",
+								"agregarPublicacion"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
 				},
-				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
-			},
-			"response": []
+				{
+					"name": "Actualizar Publicacion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNzkzNTMsImV4cCI6MTc0MDE4Mjk1M30.yViaPHpJhsCHSITrzmOmWT9VHkuuokx236gCaygE_SM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"titulo\": \"motos\",\r\n    \"contenido\": \"carros tuenables\",\r\n    \"categoria\": \"67b8db26974efc405ae3fc92\",\r\n    \"userId\": \"67b8db04974efc405ae3fc8d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/publicaciones/actualizarPublicaciones/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"publicaciones",
+								"actualizarPublicaciones",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "67b9054c9b865f168e7ca4b4"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Publicacion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNjc5NDcsImV4cCI6MTc0MDE3MTU0N30.KEVGOwBNjLVUW1PVfEmeztbjH259FxlfrQKmRFBJWJw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67b8db04974efc405ae3fc8d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/publicaciones/eliminarPublicaciones/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"publicaciones",
+								"eliminarPublicaciones",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "67b9054c9b865f168e7ca4b4"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Delete data",
-			"event": [
+			"name": "Comentario",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful DELETE request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
-							"});",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/info?id=1",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"info"
-					],
-					"query": [
+					"name": "Agregar Comentario",
+					"event": [
 						{
-							"key": "id",
-							"value": "1"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxNzg2MTQsImV4cCI6MTc0MDE4MjIxNH0.CLL5qp7FSNu1AvbYeXYC0ioMRLnnxjR32-_3qBW3aw0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"autor\": \"67b8db04974efc405ae3fc8d\",\n    \"descripcion\": \"Calidad Precio\",\n    \"publicacion\": \"67b90427f2f2624d4bc15173\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/comentarios/agregarComentario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"comentarios",
+								"agregarComentario"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
 				},
-				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
-			},
-			"response": []
+				{
+					"name": "Actualizar Comentario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxODExNjUsImV4cCI6MTc0MDE4NDc2NX0.U5WwAxRqQaNCKeI5rcHLCPKmSSh9BLGi5bjLTGs3zE4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"CRV 2025\",\r\n    \"userId\": \"67b8db04974efc405ae3fc8d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/comentarios/borrarComentario/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"comentarios",
+								"borrarComentario",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "67b904c12031d71794a15f75"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Comentario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4ZGIwNDk3NGVmYzQwNWFlM2ZjOGQiLCJpYXQiOjE3NDAxODExNjUsImV4cCI6MTc0MDE4NDc2NX0.U5WwAxRqQaNCKeI5rcHLCPKmSSh9BLGi5bjLTGs3zE4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67b8db04974efc405ae3fc8d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/gestorOpininiones-2023013/v1/comentarios/actualizarComentario/:uid\"",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"gestorOpininiones-2023013",
+								"v1",
+								"comentarios",
+								"actualizarComentario",
+								":uid\""
+							],
+							"variable": [
+								{
+									"key": "uid\"",
+									"value": "67b904c12031d71794a15f75"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

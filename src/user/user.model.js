@@ -40,11 +40,16 @@ const userSchema = Schema({
     }],
     comentarios:[{
         type: Schema.Types.ObjectId,
-        ref: "Comentarios"
+        ref: "Comentario"
     }],
     status:{
         type: Boolean,
         default: true
+    },
+    role: {
+        type: String,
+        enum: ["ADMIN", "USER"],
+        default: "USER"
     }
 },
 {

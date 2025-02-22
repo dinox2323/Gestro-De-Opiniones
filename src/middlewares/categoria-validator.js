@@ -3,9 +3,11 @@ import { categoriaExist } from "../helpers/db-validator.js";
 import { validarCampos } from "./validate-fields.js";
 import { handleErrors } from "./handle-error.js";
 import {validateJWT} from "./validate-jwt.js";
+import {hasRoles} from "./validate-role.js";
 
 export const agregarCategoriasValidator = [
     validateJWT,
+    hasRoles("ADMIN"),
     body("nombre").notEmpty().withMessage("El nombre es requerido"),
     body("descripcion").notEmpty().withMessage("La descripcion es requerido"),
     validarCampos,
@@ -15,6 +17,7 @@ export const agregarCategoriasValidator = [
 
 export const borrarCategoriasValidator = [
     validateJWT,
+    hasRoles("ADMIN"),
     param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
     param("uid").custom(categoriaExist),
     validarCampos,
@@ -23,6 +26,7 @@ export const borrarCategoriasValidator = [
 
 export const actualizarCategoriaValidator = [
     validateJWT,
+    hasRoles("ADMIN"),
     param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
     param("uid").custom(categoriaExist),
     body("nombre").optional().isString().withMessage("El nombre debe ser una cadena de texto"),
