@@ -1,21 +1,20 @@
-import Comentario from "./comentario.model.js"
+import Publicaciones from "../publicaciones/publicaciones.model.js";
+import mongoose from "mongoose";
 import User from "../user/user.model.js"
-import Publicaciones from "../publicaciones/publicaciones.model.js"
-import mongoose from "mongoose"
 
-export const agregarComentario = async (req, res) => {
+export const agregarPublicacion = async (req, res) => {
     try {
         const data = req.body;
         const {autor} = req.body
-        const {publicacion} = req.body
 
-        const comentario = await Comentario.create(data);
-        await User.findByIdAndUpdate(autor , { $push: { comentarios: comentario._id } });
-        await Publicaciones.findByIdAndUpdate(publicacion , { $push: { comentario: comentario._id } });
+        const publicacion = await Publicaciones.create(data);
+
+        await User.findByIdAndUpdate(autor , { $push: { publicaciones: publicacion._id } });
+
 
         return res.status(201).json({
-            message: "Comentario creado con éxito",
-            comentario
+            message: "Publicacion creada con éxito",
+            publicacion
         });
     } catch (err) {
         return res.status(500).json({
@@ -26,15 +25,15 @@ export const agregarComentario = async (req, res) => {
 }
 
 
-export const eliminarComentario = async (req, res) => {
+export const eliminarPublicaciones = async (req, res) => {
     try {
-        const { uid } = req.params;
+        const {  uid } = req.params;
         const { userId } = req.body;
 
         if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(uid)) {
             return res.status(400).json({
                 success: false,
-                message: "ID de usuario o comentario inválido"
+                message: "ID de usuario o publicación inválido"
             });
         }
 
@@ -46,47 +45,48 @@ export const eliminarComentario = async (req, res) => {
             });
         }
 
-        if (!usuario.comentarios.includes(uid)) {
+        if (!usuario.publicaciones.includes(uid)) {
             return res.status(403).json({
                 success: false,
-                message: "No tienes permiso para eliminar este comentario"
+                message: "No tienes permiso para eliminar esta publicación"
             });
         }
 
-        const comentarioEliminado = await Comentario.findByIdAndUpdate(uid, { status: false }, { new: true });
+        const publicacion = await Publicaciones.findByIdAndUpdate(uid, { status: false }, { new: true });
 
-        if (!comentarioEliminado) {
+        if (!publicacion) {
             return res.status(404).json({
                 success: false,
-                message: "Comentario no encontrado"
+                message: "Publicación no encontrada"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Comentario eliminado correctamente",
-            comentarioEliminado
+            message: "Publicación eliminada",
+            publicacion
         });
     } catch (err) {
-        console.error("Error al eliminar el comentario:", err);
+        console.error("Error al eliminar la publicación:", err);
         return res.status(500).json({
             success: false,
-            message: "Error al eliminar el comentario",
+            message: "Error al eliminar la publicación",
             error: err.message
         });
     }
 };
 
-export const actualizarComentario = async (req, res) => {
+
+export const actualizarPublicaciones = async (req, res) => {
     try {
-        const { uid } = req.params;
+        const {  uid } = req.params;
         const { userId } = req.body;
         const data = req.body;
 
         if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(uid)) {
             return res.status(400).json({
                 success: false,
-                message: "ID de usuario o comentario inválido"
+                message: "ID de usuario o publicación inválido"
             });
         }
 
@@ -98,32 +98,32 @@ export const actualizarComentario = async (req, res) => {
             });
         }
 
-        if (!usuario.comentarios.includes(uid)) {
+        if (!usuario.publicaciones.includes(uid)) {
             return res.status(403).json({
                 success: false,
-                message: "No tienes permiso para actualizar este comentario"
+                message: "No tienes permiso para actualizar esta publicación"
             });
         }
 
-        const comentarioActualizado = await Comentario.findByIdAndUpdate(uid, data, { new: true });
+        const publicacionActualizada = await Publicaciones.findByIdAndUpdate(uid, data, { new: true });
 
-        if (!comentarioActualizado) {
+        if (!publicacionActualizada) {
             return res.status(404).json({
                 success: false,
-                message: "Comentario no encontrado"
+                message: "Publicación no encontrada"
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Comentario actualizado exitosamente",
-            comentarioActualizado
+            message: "Publicación actualizada exitosamente",
+            publicacionActualizada
         });
     } catch (err) {
-        console.error("Error al actualizar el comentario:", err);
+        console.error("Error al actualizar la publicación:", err);
         return res.status(500).json({
             success: false,
-            message: "Error al actualizar el comentario",
+            message: "Error al actualizar la publicación",
             error: err.message
         });
     }

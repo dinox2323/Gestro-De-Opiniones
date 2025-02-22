@@ -1,26 +1,24 @@
-
-
 import express from "express";
 import {
-    agregarComentario,
-    eliminarComentario,
-    actualizarComentario
-} from "../comentarios/comentario.controller.js";
+    agregarPublicacion,
+    eliminarPublicaciones,
+    actualizarPublicaciones
+} from "../publicaciones/publicaciones.controller.js";
 import { 
-    agregarComentarioValidator, 
-    borrarComentarioValidator, 
-    actualizaComentarioValidator 
-} from "../middlewares/comentario-validator.js";
+    agregarPublicacionValidator, 
+    eliminarPublicacionValidator, 
+    actualizarPublicacionValidator 
+} from "../middlewares/publicaiones-validator.js";
 
 const router = express.Router();
 
 /**
  * @swagger
- * /comentarios/agregarComentario:
+ * /publicaciones/agregarPublicacion:
  *   post:
- *     summary: Agregar un nuevo comentario
+ *     summary: Agregar una nueva publicación
  *     description: Se requiere autenticación con token.
- *     tags: [Comentarios]
+ *     tags: [Publicaciones]
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -30,29 +28,29 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               publicacionId:
+ *               titulo:
  *                 type: string
- *                 example: "65df8976b2345a001b0a4567"
+ *                 example: "Mi primer post"
  *               contenido:
  *                 type: string
- *                 example: "¡Muy buen artículo!"
+ *                 example: "Este es el contenido de la publicación."
  *     responses:
  *       201:
- *         description: Comentario creado con éxito
+ *         description: Publicación creada con éxito
  *       400:
  *         description: Error en la validación de los datos
  *       401:
  *         description: No autorizado (token inválido o expirado)
  */
-router.post("/agregarComentario", agregarComentarioValidator, agregarComentario);
+router.post("/agregarPublicacion", agregarPublicacionValidator, agregarPublicacion);
 
 /**
  * @swagger
- * /comentarios/borrarComentario/{uid}:
+ * /publicaciones/eliminarPublicaciones/{uid}:
  *   patch:
- *     summary: Eliminar un comentario
+ *     summary: Eliminar una publicación
  *     description: Se requiere autenticación con token.
- *     tags: [Comentarios]
+ *     tags: [Publicaciones]
  *     security:
  *       - BearerAuth: []
  *     parameters:
@@ -61,24 +59,24 @@ router.post("/agregarComentario", agregarComentarioValidator, agregarComentario)
  *         required: true
  *         schema:
  *           type: string
- *         description: ID del comentario a eliminar
+ *         description: ID de la publicación a eliminar
  *     responses:
  *       200:
- *         description: Comentario eliminado con éxito
+ *         description: Publicación eliminada con éxito
  *       404:
- *         description: Comentario no encontrado
+ *         description: Publicación no encontrada
  *       401:
  *         description: No autorizado (token inválido o expirado)
  */
-router.patch("/borrarComentario/:uid", borrarComentarioValidator, eliminarComentario);
+router.patch("/eliminarPublicaciones/:uid", eliminarPublicacionValidator, eliminarPublicaciones);
 
 /**
  * @swagger
- * /comentarios/actualizarComentario/{uid}:
+ * /publicaciones/actualizarPublicaciones/{uid}:
  *   patch:
- *     summary: Actualizar un comentario
+ *     summary: Actualizar una publicación
  *     description: Se requiere autenticación con token.
- *     tags: [Comentarios]
+ *     tags: [Publicaciones]
  *     security:
  *       - BearerAuth: []
  *     parameters:
@@ -87,7 +85,7 @@ router.patch("/borrarComentario/:uid", borrarComentarioValidator, eliminarComent
  *         required: true
  *         schema:
  *           type: string
- *         description: ID del comentario a actualizar
+ *         description: ID de la publicación a actualizar
  *     requestBody:
  *       required: true
  *       content:
@@ -95,19 +93,22 @@ router.patch("/borrarComentario/:uid", borrarComentarioValidator, eliminarComent
  *           schema:
  *             type: object
  *             properties:
+ *               titulo:
+ *                 type: string
+ *                 example: "Nuevo título de la publicación"
  *               contenido:
  *                 type: string
- *                 example: "Me ha parecido un excelente artículo."
+ *                 example: "Actualizando el contenido de mi publicación."
  *     responses:
  *       200:
- *         description: Comentario actualizado con éxito
+ *         description: Publicación actualizada con éxito
  *       400:
  *         description: Error en la validación de los datos
  *       404:
- *         description: Comentario no encontrado
+ *         description: Publicación no encontrada
  *       401:
  *         description: No autorizado (token inválido o expirado)
  */
-router.patch("/actualizarComentario/:uid", actualizaComentarioValidator, actualizarComentario);
+router.patch("/actualizarPublicaciones/:uid", actualizarPublicacionValidator, actualizarPublicaciones);
 
 export default router;

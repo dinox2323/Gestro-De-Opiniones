@@ -64,3 +64,29 @@ export const login = async (req, res) => {
         })
     }
 }
+
+
+export const createAdminUser = async () => {
+    try {
+        const existingAdmin = await User.findOne({ role: "ADMIN" });
+        if (existingAdmin) {
+            console.log("Admin ya existe");
+            return;
+        }
+
+        const adminData = {
+            name: "Admin",
+            username: "admin",
+            surname: "admin",
+            phone: "12345678",
+            email: "admin@tuapp.com",
+            password: await hash("admin123"),
+            role: "ADMIN"
+        };
+
+        await User.create(adminData);
+        console.log("Admin creado con éxito");
+    } catch (err) {
+        console.error("Error al crear el admin:", err);
+    }
+};

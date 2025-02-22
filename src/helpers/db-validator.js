@@ -1,6 +1,7 @@
 import User from "../user/user.model.js"
 import Categorias from "../categorias/categorias.model.js"
 import Comentario from "../comentarios/comentario.model.js"
+import Publicaciones from "../publicaciones/publicaciones.model.js"
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -34,5 +35,12 @@ export const comentarioExist = async (uid = " ") => {
     const existe = await Comentario.findById(uid)
     if(!existe){
         throw new Error("No existe la Comentario con el ID proporcionado")
+    }
+}
+
+export const publicacionExist = async (uid = " ") => {
+    const existe = await Publicaciones.findById(uid)
+    if(!existe){
+        throw new Error("No existe la publicacion con el ID proporcionado")
     }
 }

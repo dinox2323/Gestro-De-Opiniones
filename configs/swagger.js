@@ -22,6 +22,9 @@ const options ={
     apis:[
         "./src/auth/auth.routes.js",
         "./src/user/user.routes.js",
+        "./src/categorias/categorias.routes.js",
+        "./src/comentarios/comentario.routes.js",
+        "./src/publicaciones/publicaciones.routes.js"
     ]
 }
 
